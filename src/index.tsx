@@ -3,6 +3,7 @@ import { html } from "@elysiajs/html";
 import { tailwind } from "elysia-tailwind";
 import staticPlugin from "@elysiajs/static";
 import MainLayout from "./layouts/main";
+import Navbar from "./components/navbar";
 
 const app = new Elysia()
 	.use(staticPlugin())
@@ -21,6 +22,7 @@ const app = new Elysia()
 	)
 	.get("/", () => (
 		<MainLayout>
+			<Navbar />
 			<div class="text-3xl">Hello Elysia</div>
 			hello
 		</MainLayout>
