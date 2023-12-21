@@ -8,7 +8,7 @@ import MainLayout from "./layouts/main";
 import Navbar from "./components/navbar";
 
 const app = new Elysia()
-	.state("db", db)
+	.decorate("db", db)
 	.use(staticPlugin())
 	.use(html())
 	.use(
@@ -23,7 +23,7 @@ const app = new Elysia()
 			},
 		})
 	)
-	.get("/", () => (
+	.get("/", ({ db }) => (
 		<MainLayout>
 			<Navbar />
 			<div class="text-3xl">Hello Elysia</div>
