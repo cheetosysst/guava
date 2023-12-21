@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1703150954529,
+      "tag": "0000_brief_sabra",
+      "breakpoints": true
+    }
+  ]
+}

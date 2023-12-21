@@ -2,10 +2,13 @@ import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import { tailwind } from "elysia-tailwind";
 import staticPlugin from "@elysiajs/static";
+import { db } from "./database/index";
+
 import MainLayout from "./layouts/main";
 import Navbar from "./components/navbar";
 
 const app = new Elysia()
+	.state("db", db)
 	.use(staticPlugin())
 	.use(html())
 	.use(
