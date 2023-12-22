@@ -2,13 +2,11 @@ import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import { tailwind } from "elysia-tailwind";
 import staticPlugin from "@elysiajs/static";
-import { db } from "./database/index";
 
-import MainLayout from "./layouts/main";
-import Navbar from "./components/navbar";
+import { apiRoutes } from "./api";
+import { pageRoutes } from "./pages";
 
 const app = new Elysia()
-	.decorate("db", db)
 	.use(staticPlugin())
 	.use(html())
 	.use(
@@ -23,13 +21,8 @@ const app = new Elysia()
 			},
 		})
 	)
-	.get("/", ({ db }) => (
-		<MainLayout>
-			<Navbar />
-			<div class="text-3xl">Hello Elysia</div>
-			hello
-		</MainLayout>
-	))
+	.use(apiRoutes)
+	.use(pageRoutes)
 	.listen(3000);
 
 console.log(

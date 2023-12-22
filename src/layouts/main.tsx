@@ -1,5 +1,8 @@
-export default function MainLayout({ children }: { children: JSX.Element[] }) {
-	console.log(<div>Html import needs to be in scope!</div>);
+export default function MainLayout({
+	children,
+}: {
+	children: JSX.Element[] | JSX.Element;
+}) {
 	return (
 		<html lang="en">
 			<head>
