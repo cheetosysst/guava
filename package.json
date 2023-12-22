@@ -6,7 +6,8 @@
     "dev": "bun run --watch src/index.tsx",
     "lint": "biome lint .",
     "xss": "xss-scan",
-    "generate:sqlite": "drizzle-kit generate:sqlite"
+    "generate:sqlite": "drizzle-kit generate:sqlite",
+    "migrate": "bun generate:sqlite && bun ./src/database/migration.ts"
   },
   "dependencies": {
     "@elysiajs/html": "^0.7.3",
