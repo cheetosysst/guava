@@ -4,17 +4,14 @@ export default function Navbar() {
 	return (
 		<div class="navbar bg-neutral text-neutral-content">
 			<div class="navbar-start w-fit">
-				<button
-					type="button"
-					class="flex btn items-center btn-ghost text-2xl"
-				>
+				<a href="/" class="flex btn items-center btn-ghost text-2xl">
 					<StopCircle
 						name="Main Logo in Navbar"
 						className="w-8 h-8"
 						width={2.5}
 					/>
 					GUAVA
-				</button>
+				</a>
 			</div>
 			<div class="navbar-center flex justify-center flex-grow px-2">
 				<input
