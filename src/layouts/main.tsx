@@ -1,7 +1,11 @@
+import Navbar from "../components/navbar";
+
 export default function MainLayout({
 	children,
+	title = "Document",
 }: {
 	children: JSX.Element[] | JSX.Element;
+	title?: string;
 }) {
 	return (
 		<html lang="en">
@@ -12,9 +16,16 @@ export default function MainLayout({
 					content="width=device-width, initial-scale=1.0"
 				/>
 				<link rel="stylesheet" href="/public/dist.css" />
-				<title>Document</title>
+				<title>
+					{title}
+					{" - Guava. Spent More, Smile Less."}
+				</title>
 			</head>
-			<body>{children}</body>
+			<body class="bg-base-200 min-h-[100dvh]">
+				{/* TODO Navbar requires user login state. Check if this needs to be refactored */}
+				<Navbar />
+				<div class="max-w-7xl mx-auto w-full">{children}</div>
+			</body>
 		</html>
 	);
 }

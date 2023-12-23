@@ -8,10 +8,7 @@
 		format("truetype");
 }
 
-.lucide-icon {
-	stroke: currentColor;
-	fill: none;
-	stroke-width: 2;
-	stroke-linecap: round;
-	stroke-linejoin: round;
+.scroll-hide::-webkit-scrollbar {
+	display: none;
+	scrollbar-width: none;
 }
