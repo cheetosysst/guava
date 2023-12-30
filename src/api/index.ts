@@ -1,6 +1,4 @@
 import Elysia from "elysia";
+import userRoute from "./user";
 
-export const apiRoutes = new Elysia({ prefix: "/api" }).get(
-	"/test",
-	() => "test",
-);
+export const apiRoutes = new Elysia({ prefix: "/api" }).use(userRoute);

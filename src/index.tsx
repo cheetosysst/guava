@@ -5,9 +5,17 @@ import staticPlugin from "@elysiajs/static";
 
 import { apiRoutes } from "./api";
 import { pageRoutes } from "./pages";
+import { cookie } from "@elysiajs/cookie";
+import { exit } from "process";
+
+if (typeof Bun.env.JWT_SECRET !== "string") {
+	console.log("invalid jwt secret");
+	exit();
+}
 
 const app = new Elysia()
 	.use(staticPlugin())
+	.use(cookie())
 	.use(html())
 	.use(
 		tailwind({

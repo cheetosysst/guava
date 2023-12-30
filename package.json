@@ -10,15 +10,18 @@
     "migrate": "bun generate:sqlite && bun ./src/database/migration.ts"
   },
   "dependencies": {
+    "@elysiajs/cookie": "^0.8.0",
     "@elysiajs/html": "^0.7.3",
     "@elysiajs/static": "^0.7.1",
     "drizzle-orm": "^0.29.1",
     "elysia": "latest",
-    "elysia-tailwind": "1.0.9"
+    "elysia-tailwind": "1.0.9",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
     "@kitajs/ts-html-plugin": "^1.3.3",
+    "@types/jsonwebtoken": "^9.0.5",
     "bun-types": "latest",
     "daisyui": "latest",
     "drizzle-kit": "^0.20.7",

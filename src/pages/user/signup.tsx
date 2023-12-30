@@ -22,37 +22,50 @@ const Page = new Elysia().get("/signup", () => (
 					</p>
 				</div>
 				<div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-					<form class="card-body">
+					<form
+						class="card-body"
+						id="loginform"
+						hx-post="/api/user/signup"
+						hx-trigger="submit"
+						hx-target="#result"
+					>
+						<div id="result" />
 						<div class="form-control">
-							<label class="label">
+							<label for="username" class="label">
 								<span class="label-text">Username</span>
 							</label>
 							<input
+								id="username"
+								name="username"
 								type="text"
 								placeholder="Username"
-								class="input input-bordered"
+								class="input input-bordered text-primary-content"
 								required
 							/>
 						</div>
 						<div class="form-control">
-							<label class="label">
+							<label for="email" class="label">
 								<span class="label-text">Email</span>
 							</label>
 							<input
+								id="email"
+								name="email"
 								type="email"
 								placeholder="Email"
-								class="input input-bordered"
+								class="input input-bordered text-primary-content"
 								required
 							/>
 						</div>
 						<div class="form-control">
-							<label class="label">
+							<label for="password" class="label">
 								<span class="label-text">Password</span>
 							</label>
 							<input
+								id="password"
+								name="password"
 								type="password"
 								placeholder="Password"
-								class="input input-bordered"
+								class="input input-bordered text-primary-content"
 								required
 							/>
 							<label class="label">

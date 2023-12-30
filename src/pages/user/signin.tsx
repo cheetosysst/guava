@@ -20,15 +20,24 @@ const Page = new Elysia().get("/signin", () => (
 					</p>
 				</div>
 				<div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-					<form class="card-body">
+					<form
+						class="card-body"
+						id="loginform"
+						hx-post="/api/user/signin"
+						hx-trigger="submit"
+						hx-target="#result"
+					>
+						<div id="result" />
 						<div class="form-control">
 							<label class="label">
 								<span class="label-text">Username</span>
 							</label>
 							<input
 								type="text"
+								id="username"
+								name="username"
 								placeholder="Username"
-								class="input input-bordered"
+								class="input input-bordered text-primary-content"
 								required
 							/>
 						</div>
@@ -38,8 +47,10 @@ const Page = new Elysia().get("/signin", () => (
 							</label>
 							<input
 								type="password"
+								id="password"
+								name="password"
 								placeholder="Password"
-								class="input input-bordered"
+								class="input input-bordered text-primary-content"
 								required
 							/>
 							<label class="label">
