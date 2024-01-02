@@ -8,17 +8,23 @@ export interface AppContext {
 	user: AuthToken | undefined;
 }
 
-export const appContext = new Elysia().use(cookie()).derive(({ cookie }) => {
-	const authToken = cookie.guavaToken;
-	const user = (
-		authToken != null
-			? jwt.verify(authToken as string, Bun.env.JWT_SECRET as string)
-			: undefined
-	) as AuthToken | undefined; // TODO put this type somewhere else
+export const appContext = new Elysia()
+	.use(cookie())
+	.derive(({ cookie, removeCookie }) => {
+		const authToken = cookie.guavaToken;
+		const user = (
+			authToken != null
+				? jwt.verify(authToken as string, Bun.env.JWT_SECRET as string)
+				: undefined
+		) as AuthToken | undefined; // TODO put this type somewhere else
 
-	const context = {
-		user,
-	} satisfies AppContext;
+		if (typeof authToken === "string" && authToken.length === 0) {
+			removeCookie("guavaToken");
+		}
 
-	return { appContext: context };
-});
+		const context = {
+			user,
+		} satisfies AppContext;
+
+		return { appContext: context };
+	});

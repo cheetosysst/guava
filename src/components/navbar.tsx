@@ -43,7 +43,6 @@ export default function Navbar({ context }: { context?: AppContext }) {
 }
 
 function UserButtons({ user }: { user: AuthToken | undefined }) {
-	console.log(user);
 	if (user == null) return <UserSignup />;
 
 	return <UserProfile user={user} />;
@@ -60,7 +59,7 @@ function UserProfile({ user }: { user: AuthToken }) {
 				<HeroIconUser name="User Icon" className="w-6 h-6" />
 			</a>
 			<a
-				href="/user/logout"
+				href="/user/signout"
 				id={"navbar-signup"}
 				class="btn btn-outline btn-info"
 			>
