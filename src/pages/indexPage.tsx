@@ -1,13 +1,16 @@
 import Elysia from "elysia";
 import MainLayout from "../layouts/main";
 import { Card } from "../components/card";
+import { appContext } from "../utils/context";
 
-const Page = new Elysia().get("/", () => (
-	<MainLayout title="Home">
-		<Hero />
-		<Event />
-	</MainLayout>
-));
+const Page = new Elysia().use(appContext).get("/", ({ appContext }) => {
+	return (
+		<MainLayout title="Home" appContext={appContext}>
+			<Hero />
+			<Event />
+		</MainLayout>
+	);
+});
 
 export default Page;
 

@@ -6,7 +6,7 @@ import { user } from "../../database/schema";
 import jwt from "jsonwebtoken";
 import cookie from "@elysiajs/cookie";
 
-const singinHandler = new Elysia().use(cookie).post(
+const singinHandler = new Elysia().use(cookie()).post(
 	"/signin",
 	async ({ body: { username, password }, set, setCookie }) => {
 		// TODO Fix user entry query under bun:sqlite
@@ -56,9 +56,6 @@ const singinHandler = new Elysia().use(cookie).post(
 			password: t.String(),
 		}),
 		type: "formdata",
-		// cookie: t.Cookie({
-		// 	token: t.String(),
-		// }),
 	}
 );
 
