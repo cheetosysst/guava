@@ -5,7 +5,7 @@ export const user = sqliteTable("users", {
 	id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
 	username: text("username").notNull(),
 	passwordHash: text("passsword_hash").notNull(),
-	role: text("user", { enum: ["normal", "admin"] })
+	role: text("role", { enum: ["normal", "admin"] })
 		.notNull()
 		.default("normal"),
 });
