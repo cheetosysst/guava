@@ -2,7 +2,7 @@ import Elysia, { t } from "elysia";
 import { db } from "../../database";
 import { eq } from "drizzle-orm";
 import { hash } from "../../utils/hash";
-import { user } from "../../database/schema";
+import { business, businessAccount, user } from "../../database/schema";
 import jwt from "jsonwebtoken";
 import cookie from "@elysiajs/cookie";
 
@@ -17,6 +17,7 @@ const singinHandler = new Elysia().use(cookie()).post(
 		const userEntry = await db
 			.select()
 			.from(user)
+			.leftJoin(businessAccount, eq(user.id, businessAccount.id))
 			.where(eq(user.username, username));
 		if (!userEntry.length) {
 			set.status = 401;
@@ -31,14 +32,16 @@ const singinHandler = new Elysia().use(cookie()).post(
 			);
 		}
 		const passwordHash = hash(password);
-		if (passwordHash !== userEntry[0].passwordHash) {
+		if (passwordHash !== userEntry[0].users.passwordHash) {
 			set.status = 401;
 			return <span class="alert alert-error">Incorrect Password!</span>;
 		}
 
 		const newToken = jwt.sign(
 			{
-				userid: username,
+				uid: username,
+				role: userEntry.at(0)?.users.role,
+				bsn: userEntry.at(0)?.business_account?.business || "",
 			},
 			Bun.env.JWT_SECRET as string,
 			{ expiresIn: "1h" }

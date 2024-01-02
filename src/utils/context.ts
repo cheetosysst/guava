@@ -2,10 +2,18 @@ import cookie from "@elysiajs/cookie";
 import Elysia from "elysia";
 import jwt from "jsonwebtoken";
 
-export type AuthToken = { userid: string; iat: number; exp: number };
+export type AuthToken = {
+	uid: string;
+	iat: number;
+	exp: number;
+	role: "normal" | "admin";
+	bsn: string;
+};
 
 export interface AppContext {
 	user: AuthToken | undefined;
+	business: number | undefined;
+	role: "admin" | "normal";
 }
 
 export const appContext = new Elysia()
@@ -18,12 +26,27 @@ export const appContext = new Elysia()
 				: undefined
 		) as AuthToken | undefined; // TODO put this type somewhere else
 
-		if (typeof authToken === "string" && authToken.length === 0) {
+		if (
+			(typeof authToken === "string" && authToken.length === 0) ||
+			typeof user === "undefined"
+		) {
 			removeCookie("guavaToken");
+			return {
+				appContext: {
+					user: undefined,
+					business: undefined,
+					role: "normal",
+				} satisfies AppContext,
+			};
 		}
+
+		const business = user.bsn.length ? Number(user.bsn) : undefined;
+		const role = user.role;
 
 		const context = {
 			user,
+			business,
+			role,
 		} satisfies AppContext;
 
 		return { appContext: context };

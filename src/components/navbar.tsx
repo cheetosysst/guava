@@ -52,7 +52,7 @@ function UserProfile({ user }: { user: AuthToken }) {
 	return (
 		<>
 			<a
-				href={`/user/profile?name=${encodeURI(user.userid)}`}
+				href={`/user/profile?name=${encodeURI(user.uid)}`}
 				id={"navbar-signup"}
 				class="btn btn-outline btn-warning"
 			>
