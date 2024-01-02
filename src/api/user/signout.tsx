@@ -7,7 +7,6 @@ const signoutHandler = new Elysia()
 		const authToken = cookie.guavaToken;
 
 		if (authToken != null) {
-			console.log("remove", authToken);
 			// this api is broken
 			// see https://github.com/elysiajs/elysia-cookie/issues/6
 			// removeCookie("guavaToken");

@@ -7,8 +7,6 @@ import { hash } from "../../utils/hash";
 const singupHandler = new Elysia().post(
 	"/signup",
 	async ({ body: { email, username, password }, set }) => {
-		console.log({ email, username, password });
-
 		const exists = await db.transaction(async (tx) => {
 			const existingUser = await tx
 				.select()
@@ -32,7 +30,6 @@ const singupHandler = new Elysia().post(
 		}
 
 		const passwordHash = hash(password);
-		console.log({ username, email, passwordHash });
 		signup(username, email, passwordHash);
 
 		set.status = 200;

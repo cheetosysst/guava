@@ -14,21 +14,6 @@ if (typeof Bun.env.JWT_SECRET !== "string") {
 	exit();
 }
 
-// const temp = ["user.ts"].map(file=>{
-
-// 	// const filename = path.parse(file)
-// 	return {
-// 		// name:
-// 	}
-// })
-
-// const bundle = await Bun.build({
-// 	entrypoints: [path.join(process.cwd(), "/src/script/user.ts")],
-// 	outdir: path.join("public"),
-// });
-
-// console.log(bundle);
-
 const app = new Elysia()
 	.use(staticPlugin())
 	.use(cookie())
