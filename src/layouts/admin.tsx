@@ -28,7 +28,6 @@ export default function AdminLayout({
 	title?: string;
 	className?: string;
 }) {
-	console.log(Object.keys(tabs).map((tabname) => tabname === "dashboard"));
 	return (
 		<html lang="en">
 			<head>
