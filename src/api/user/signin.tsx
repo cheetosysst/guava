@@ -44,7 +44,7 @@ const singinHandler = new Elysia().use(cookie()).post(
 				bsn: userEntry.at(0)?.business_account?.business || "",
 			},
 			Bun.env.JWT_SECRET as string,
-			{ expiresIn: "30d" }
+			{ expiresIn: "30d" },
 		);
 
 		setCookie("guavaToken", newToken);
@@ -59,7 +59,7 @@ const singinHandler = new Elysia().use(cookie()).post(
 			password: t.String(),
 		}),
 		type: "formdata",
-	}
+	},
 );
 
 export default singinHandler;

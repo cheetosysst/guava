@@ -53,7 +53,7 @@ const addHandler = new Elysia({ prefix: "/add" }).post(
 			name: t.String(),
 		}),
 		type: "formdata",
-	}
+	},
 );
 
 const businessHandler = new Elysia({ prefix: "/business" })

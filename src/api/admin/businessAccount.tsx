@@ -59,7 +59,7 @@ const addAccountHandler = new Elysia({ prefix: "/add" }).post(
 			username: t.String(),
 		}),
 		type: "formdata",
-	}
+	},
 );
 
 const businessAccountHandler = new Elysia({ prefix: "/businessAccount" })

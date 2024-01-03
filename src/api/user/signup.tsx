@@ -43,7 +43,7 @@ const singupHandler = new Elysia().post(
 			password: t.String(),
 		}),
 		type: "formdata",
-	}
+	},
 );
 
 async function signup(username: string, email: string, passwordHash: string) {
