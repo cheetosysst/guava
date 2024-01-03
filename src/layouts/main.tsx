@@ -35,7 +35,7 @@ export default function MainLayout({
 			<body class="bg-base-200 min-h-[100dvh] h-full">
 				{/* TODO Navbar requires user login state. Check if this needs to be refactored */}
 				<Navbar context={appContext} />
-				<div safe class={`max-w-7xl mx-auto w-full ${className}`}>
+				<div class={`max-w-7xl mx-auto w-full ${className}`}>
 					{children}
 				</div>
 			</body>
