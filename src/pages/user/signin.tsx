@@ -1,6 +1,5 @@
 import Elysia from "elysia";
 import MainLayout from "../../layouts/main";
-import { appContext } from "../../utils/context";
 
 const Page = new Elysia().get("/signin", () => {
 	return (

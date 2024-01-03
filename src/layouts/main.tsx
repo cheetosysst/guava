@@ -22,7 +22,7 @@ export default function MainLayout({
 				/>
 				<link rel="stylesheet" href="/public/dist.css" />
 				<title>
-					{title}
+					{Html.escapeHtml(title)}
 					{" - Guava. Spent More, Smile Less."}
 				</title>
 				<script
@@ -35,7 +35,7 @@ export default function MainLayout({
 			<body class="bg-base-200 min-h-[100dvh] h-full">
 				{/* TODO Navbar requires user login state. Check if this needs to be refactored */}
 				<Navbar context={appContext} />
-				<div class={`max-w-7xl mx-auto w-full ${className}`}>
+				<div safe class={`max-w-7xl mx-auto w-full ${className}`}>
 					{children}
 				</div>
 			</body>

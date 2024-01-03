@@ -1,3 +1,4 @@
+import { Html } from "@elysiajs/html";
 import Navbar from "../components/navbar";
 import type { AppContext } from "../utils/context";
 
@@ -38,7 +39,7 @@ export default function AdminLayout({
 				/>
 				<link rel="stylesheet" href="/public/dist.css" />
 				<title>
-					{title}
+					{Html.escapeHtml(title)}
 					{" - Guava. Spent More, Smile Less."}
 				</title>
 				<script
@@ -58,7 +59,7 @@ export default function AdminLayout({
 								href={tabs[tabname].href}
 								active={tabname === "dashboard"}
 							>
-								{tabs[tabname].name}
+								{Html.escapeHtml(tabs[tabname].name)}
 							</TabButton>
 						))}
 					</div>
@@ -66,6 +67,7 @@ export default function AdminLayout({
 						id="tab-content"
 						hx-get="/api/admin/dashboard"
 						hx-trigger="load"
+						safe
 					>
 						{children}
 					</div>
@@ -94,6 +96,7 @@ function TabButton({
 			// @ts-ignore
 			_="on htmx:afterOnLoad set @aria-selected of <[aria-selected=true]/> to false tell the target take .selected set @aria-selected to true"
 			hx-trigger="click"
+			safe
 		>
 			{children}
 		</button>

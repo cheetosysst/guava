@@ -46,7 +46,7 @@ export function StopCircle({
 			data-slot="icon"
 			class={`${className}`}
 		>
-			<title>{name}</title>
+			<title safe>{name}</title>
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -80,7 +80,7 @@ export function ShoppingBag({
 			data-slot="icon"
 			class={`${className}`}
 		>
-			<title>{name}</title>
+			<title safe>{name}</title>
 
 			<path
 				stroke-linecap="round"
@@ -110,7 +110,7 @@ export function HeroIconUser({
 			data-slot="icon"
 			class={`${className}`}
 		>
-			<title>{name}</title>
+			<title safe>{name}</title>
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -139,7 +139,7 @@ export function HeroIconLogOut({
 			data-slot="icon"
 			class={`${className}`}
 		>
-			<title>{name}</title>
+			<title safe>{name}</title>
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"

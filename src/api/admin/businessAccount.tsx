@@ -49,7 +49,7 @@ const addAccountHandler = new Elysia({ prefix: "/add" }).post(
 			);
 
 		return (
-			<span class="alert inline-block alert-success">
+			<span safe class="alert inline-block alert-success">
 				User {body.username} added!
 			</span>
 		);
@@ -88,7 +88,7 @@ const businessAccountHandler = new Elysia({ prefix: "/businessAccount" })
 							</div>
 							<select class="select select-bordered select-ghost w-full max-w-xs">
 								{businesses.map((item) => (
-									<option value={item.name}>
+									<option safe value={item.name}>
 										{item.name}
 									</option>
 								))}

@@ -22,10 +22,15 @@ export function Card({
 				<img src={src} alt={`product ${name}`} />
 			</figure>
 			<div class="flex-1 overflow-hidden p-2 font-bold transition-all duration-500 after:blur-sm group-hover:flex-[4]">
-				<p class="prose-lg line-clamp-1 pb-1 leading-5 transition duration-500 group-hover:text-error">
+				<p
+					class="prose-lg line-clamp-1 pb-1 leading-5 transition duration-500 group-hover:text-error"
+					safe
+				>
 					{name}
 				</p>
-				<p class="text-sm font-normal">{description}</p>
+				<p class="text-sm font-normal" safe>
+					{description}
+				</p>
 				<p class="text-lg text-secondary">$ {price}</p>
 			</div>
 		</a>

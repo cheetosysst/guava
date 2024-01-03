@@ -1,13 +1,12 @@
-import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
-import { tailwind } from "elysia-tailwind";
 import staticPlugin from "@elysiajs/static";
+import { Elysia } from "elysia";
+import { tailwind } from "elysia-tailwind";
 
-import { apiRoutes } from "./api";
-import { pageRoutes } from "./pages";
 import { cookie } from "@elysiajs/cookie";
 import { exit } from "process";
-import path from "path";
+import { apiRoutes } from "./api";
+import { pageRoutes } from "./pages";
 
 if (typeof Bun.env.JWT_SECRET !== "string") {
 	console.log("invalid jwt secret");
