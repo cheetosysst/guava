@@ -1,5 +1,6 @@
 import Elysia from "elysia";
 import { appContext } from "../../utils/context";
+import businessHandler from "./business";
 import businessAccountHandler from "./businessAccount";
 import dashboardHandler from "./dashboard";
 
@@ -11,7 +12,11 @@ const adminRoute = new Elysia({ prefix: "/admin" }).use(appContext).guard(
 			}
 		},
 	},
-	(app) => app.use(dashboardHandler).use(businessAccountHandler),
+	(app) =>
+		app
+			.use(dashboardHandler)
+			.use(businessHandler)
+			.use(businessAccountHandler),
 );
 
 export default adminRoute;

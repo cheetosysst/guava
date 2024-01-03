@@ -6,6 +6,10 @@ const tabs: Record<string, { name: string; href: string }> = {
 		name: "Dashboard",
 		href: "dashboard",
 	},
+	business: {
+		name: "Business",
+		href: "business",
+	},
 	businessAccount: {
 		name: "Business Account",
 		href: "businessAccount",
