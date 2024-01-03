@@ -5,10 +5,12 @@ export default function MainLayout({
 	children,
 	appContext,
 	title = "Document",
+	className = "",
 }: {
 	children: JSX.Element[] | JSX.Element;
 	appContext?: AppContext;
 	title?: string;
+	className?: string;
 }) {
 	return (
 		<html lang="en">
@@ -28,11 +30,14 @@ export default function MainLayout({
 					integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
 					crossorigin="anonymous"
 				/>
+				<script src="https://unpkg.com/hyperscript.org@0.9.12" />
 			</head>
-			<body class="bg-base-200 min-h-[100dvh]">
+			<body class="bg-base-200 min-h-[100dvh] h-full">
 				{/* TODO Navbar requires user login state. Check if this needs to be refactored */}
 				<Navbar context={appContext} />
-				<div class="max-w-7xl mx-auto w-full">{children}</div>
+				<div class={`max-w-7xl mx-auto w-full ${className}`}>
+					{children}
+				</div>
 			</body>
 		</html>
 	);

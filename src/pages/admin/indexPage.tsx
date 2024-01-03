@@ -1,8 +1,12 @@
 import Elysia from "elysia";
-import MainLayout from "../../layouts/main";
+import AdminLayout from "../../layouts/admin";
 
 const page = new Elysia().get("/", () => {
-	return <MainLayout>admin</MainLayout>;
+	return (
+		<AdminLayout className="flex" title="admin panel">
+			dashboard!
+		</AdminLayout>
+	);
 });
 
 export default page;

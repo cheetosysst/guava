@@ -1,10 +1,10 @@
-import Elysia, { t } from "elysia";
-import { db } from "../../database";
-import { eq } from "drizzle-orm";
-import { hash } from "../../utils/hash";
-import { business, businessAccount, user } from "../../database/schema";
-import jwt from "jsonwebtoken";
 import cookie from "@elysiajs/cookie";
+import { eq } from "drizzle-orm";
+import Elysia, { t } from "elysia";
+import jwt from "jsonwebtoken";
+import { db } from "../../database";
+import { businessAccount, user } from "../../database/schema";
+import { hash } from "../../utils/hash";
 
 const singinHandler = new Elysia().use(cookie()).post(
 	"/signin",
@@ -44,7 +44,7 @@ const singinHandler = new Elysia().use(cookie()).post(
 				bsn: userEntry.at(0)?.business_account?.business || "",
 			},
 			Bun.env.JWT_SECRET as string,
-			{ expiresIn: "1h" }
+			{ expiresIn: "30d" }
 		);
 
 		setCookie("guavaToken", newToken);
