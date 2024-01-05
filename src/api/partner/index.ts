@@ -3,7 +3,7 @@ import { appContext } from "../../utils/context";
 import dashboardHandler from "./dashboard";
 import publishHandler from "./publish";
 
-const adminRoute = new Elysia({ prefix: "/partner" }).use(appContext).guard(
+const partnerRoute = new Elysia({ prefix: "/partner" }).use(appContext).guard(
 	{
 		beforeHandle({ appContext }) {
 			if (appContext.business == null || appContext.business <= 0) {
@@ -14,4 +14,4 @@ const adminRoute = new Elysia({ prefix: "/partner" }).use(appContext).guard(
 	(app) => app.use(publishHandler).use(dashboardHandler),
 );
 
-export default adminRoute;
+export default partnerRoute;
