@@ -1,9 +1,14 @@
 import Elysia from "elysia";
 import AdminLayout from "../../layouts/admin";
+import { appContext } from "../../utils/context";
 
-const page = new Elysia().get("/", () => {
+const page = new Elysia().use(appContext).get("/", ({ appContext }) => {
 	return (
-		<AdminLayout className="flex" title="admin panel">
+		<AdminLayout
+			className="flex"
+			appContext={appContext}
+			title="admin panel"
+		>
 			dashboard!
 		</AdminLayout>
 	);

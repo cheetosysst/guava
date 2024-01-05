@@ -40,7 +40,7 @@ export const appContext = new Elysia()
 			};
 		}
 
-		const business = user.bsn.length ? Number(user.bsn) : undefined;
+		const business = Number(user.bsn);
 		const role = user.role;
 
 		const context = {
@@ -48,6 +48,8 @@ export const appContext = new Elysia()
 			business,
 			role,
 		} satisfies AppContext;
+
+		console.log("context", { context, user });
 
 		return { appContext: context };
 	});

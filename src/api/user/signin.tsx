@@ -17,7 +17,7 @@ const singinHandler = new Elysia().use(cookie()).post(
 		const userEntry = await db
 			.select()
 			.from(user)
-			.leftJoin(businessAccount, eq(user.id, businessAccount.id))
+			.leftJoin(businessAccount, eq(user.id, businessAccount.id)) // this left join doesn't parse correctly
 			.where(eq(user.username, username));
 		if (!userEntry.length) {
 			set.status = 401;
@@ -31,21 +31,26 @@ const singinHandler = new Elysia().use(cookie()).post(
 				</span>
 			);
 		}
+		const businessAccountEntry = await db
+			.select()
+			.from(businessAccount)
+			.where(eq(businessAccount.id, userEntry[0].users.id));
+
 		const passwordHash = hash(password);
 		if (passwordHash !== userEntry[0].users.passwordHash) {
 			set.status = 401;
 			return <span class="alert alert-error">Incorrect Password!</span>;
 		}
 
-		const newToken = jwt.sign(
-			{
-				uid: username,
-				role: userEntry.at(0)?.users.role,
-				bsn: userEntry.at(0)?.business_account?.business || "",
-			},
-			Bun.env.JWT_SECRET as string,
-			{ expiresIn: "30d" },
-		);
+		const payload = {
+			uid: username,
+			role: userEntry.at(0)?.users.role,
+			bsn: businessAccountEntry.at(0)?.business || -1,
+		};
+		console.log(payload);
+		const newToken = jwt.sign(payload, Bun.env.JWT_SECRET as string, {
+			expiresIn: "30d",
+		});
 
 		setCookie("guavaToken", newToken);
 
@@ -59,7 +64,7 @@ const singinHandler = new Elysia().use(cookie()).post(
 			password: t.String(),
 		}),
 		type: "formdata",
-	},
+	}
 );
 
 export default singinHandler;
