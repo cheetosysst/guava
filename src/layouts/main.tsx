@@ -1,3 +1,4 @@
+import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import type { AppContext } from "../utils/context";
 
@@ -37,6 +38,7 @@ export default function MainLayout({
 				<Navbar context={appContext} />
 				<div class={`max-w-7xl mx-auto w-full ${className}`}>
 					{children}
+					<Footer />
 				</div>
 			</body>
 		</html>

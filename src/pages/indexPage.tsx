@@ -104,7 +104,7 @@ const Event = () => {
 		// 	class="hero min-h-screen"
 		// 	style="background-image: url(https://picsum.photos/id/1076/1920/1080);"
 		// >
-		<div class="card group w-full h-72 m-8 bg-base-100 shadow-xl image-full">
+		<div class="card group w-full h-72 my-8 bg-base-100 shadow-xl image-full">
 			<figure class="h-full">
 				<img
 					src="https://picsum.photos/id/1076/2000/300"
