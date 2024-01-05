@@ -47,7 +47,6 @@ const singinHandler = new Elysia().use(cookie()).post(
 			role: userEntry.at(0)?.users.role,
 			bsn: businessAccountEntry.at(0)?.business || -1,
 		};
-		console.log(payload);
 		const newToken = jwt.sign(payload, Bun.env.JWT_SECRET as string, {
 			expiresIn: "30d",
 		});

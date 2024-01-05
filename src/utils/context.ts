@@ -49,7 +49,5 @@ export const appContext = new Elysia()
 			role,
 		} satisfies AppContext;
 
-		console.log("context", { context, user });
-
 		return { appContext: context };
 	});
