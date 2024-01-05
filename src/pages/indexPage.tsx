@@ -1,6 +1,6 @@
 import Elysia from "elysia";
-import MainLayout from "../layouts/main";
 import { Card } from "../components/card";
+import MainLayout from "../layouts/main";
 import { appContext } from "../utils/context";
 
 const Page = new Elysia().use(appContext).get("/", ({ appContext }) => {
@@ -80,7 +80,7 @@ const Hero = () => {
 				On Sale!
 			</h2>
 			<div
-				class="w-full flex gap-4 md:gap-8 overflow-x-auto"
+				class="w-full scroll-hide flex gap-4 md:gap-8 pb-10 overflow-x-auto"
 				style={{ scrollbarWidth: "none" }}
 			>
 				{mockData.map((item) => (
