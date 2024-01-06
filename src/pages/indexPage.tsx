@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import Elysia from "elysia";
 import { Card } from "../components/card";
 import { db } from "../database";
@@ -25,6 +25,7 @@ const Hero = async () => {
 				.from(product)
 				.innerJoin(productImage, eq(product.id, productImage.product)) // this doesn't return actual data, this is a bug in drizzle. Have to use this ugly workaround for now
 				.limit(10)
+				.orderBy(desc(product.id))
 		).map(async (item) => {
 			const images = await db
 				.select()
