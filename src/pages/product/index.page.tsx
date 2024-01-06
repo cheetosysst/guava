@@ -8,7 +8,7 @@ import {
 import { db } from "../../database";
 import { business, product, productImage } from "../../database/schema";
 import MainLayout from "../../layouts/main";
-import { AppContext, appContext } from "../../utils/context";
+import { appContext } from "../../utils/context";
 
 const Breadcrumb = ({
 	businessName,
@@ -62,13 +62,7 @@ enum ProductQueryError {
 	BUSINESS_NOT_FOUND = 1,
 }
 
-async function MainSection({
-	context,
-	productId,
-}: {
-	context: AppContext;
-	productId: string | undefined;
-}) {
+async function MainSection({ productId }: { productId: string | undefined }) {
 	if (productId == null || Number.isNaN(Number(productId))) {
 		productId;
 		return (
@@ -268,10 +262,7 @@ const Page = new Elysia().use(appContext).get(
 			<MainLayout className="pt-4 mb-10" appContext={appContext}>
 				<div class="card bg-base-100 drop-shadow-md">
 					<div class="card-body">
-						<MainSection
-							context={appContext}
-							productId={query.id}
-						/>
+						<MainSection productId={query.id} />
 					</div>
 				</div>
 				<Disclaimer />
