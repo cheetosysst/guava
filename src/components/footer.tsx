@@ -2,7 +2,7 @@ import { StopCircle } from "./icon";
 
 export default function Footer() {
 	return (
-		<footer class="footer mx-auto p-10 drop-shadow-lg bg-neutral text-neutral-content rounded-t-3xl">
+		<footer class="footer max-w-7xl mx-auto w-full p-10 drop-shadow-lg bg-neutral text-neutral-content rounded-t-3xl">
 			<aside>
 				<StopCircle
 					name="Main Logo in Footer"

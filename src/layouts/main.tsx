@@ -38,8 +38,8 @@ export default function MainLayout({
 				<Navbar context={appContext} />
 				<div class={`max-w-7xl mx-auto w-full ${className}`}>
 					{children}
-					<Footer />
 				</div>
+				<Footer />
 			</body>
 		</html>
 	);
