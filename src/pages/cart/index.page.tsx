@@ -27,7 +27,6 @@ const cartPage = new Elysia()
 					.select()
 					.from(product)
 					.where(eq(product.id, item.cart_item.product as number));
-				console.log(productEntry);
 				return { ...item, product: productEntry[0] };
 			})
 		);
