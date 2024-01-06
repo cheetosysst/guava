@@ -15,6 +15,13 @@
       "when": 1704184812898,
       "tag": "0001_graceful_starbolt",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1704528359056,
+      "tag": "0002_old_solo",
+      "breakpoints": true
     }
   ]
 }

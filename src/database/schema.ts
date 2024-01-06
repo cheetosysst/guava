@@ -1,5 +1,5 @@
 import { relations, sql } from "drizzle-orm";
-import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const user = sqliteTable("users", {
 	id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
@@ -54,7 +54,30 @@ export const productImage = sqliteTable("product_image", {
 	url: text("url", { mode: "text" }).notNull(),
 });
 
-export const relationUser = relations(user, ({ one }) => ({
+export const cartItem = sqliteTable("cart_item", {
+	id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }), // realistically this might not end well but good enough ig. UUID would be a better option for this usecase
+	user: integer("user", { mode: "number" }).references(() => user.id, {
+		onDelete: "cascade",
+	}),
+	product: integer("product", { mode: "number" }).references(
+		() => product.id,
+		{ onDelete: "cascade" },
+	),
+	amount: integer("amount"),
+});
+
+export const relationCartItem = relations(cartItem, ({ one }) => ({
+	user: one(user, {
+		fields: [cartItem.user],
+		references: [user.id],
+	}),
+	product: one(product, {
+		fields: [cartItem.product],
+		references: [product.id],
+	}),
+}));
+
+export const relationUser = relations(user, ({ one, many }) => ({
 	profile: one(userProfile, {
 		fields: [user.id],
 		references: [userProfile.id],
@@ -63,6 +86,7 @@ export const relationUser = relations(user, ({ one }) => ({
 		fields: [user.id],
 		references: [businessAccount.id],
 	}),
+	cartItem: many(cartItem),
 }));
 
 export const relationUserProfile = relations(userProfile, ({ one }) => ({

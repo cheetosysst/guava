@@ -153,10 +153,20 @@ async function MainSection({ productId }: { productId: string | undefined }) {
 						{productData.product.name}
 					</h1>
 					<p class="my-4">{productData.product.description}</p>
-					<form class="absolute bottom-0 flex justify-start gap-2 w-full">
+					<form
+						class="absolute bottom-0 flex justify-start gap-2 w-full"
+						hx-post="/api/cart/add"
+						hx-swap="none"
+					>
+						<input
+							type="hidden"
+							name="product"
+							value={productData.product.id.toString()}
+						/>
 						<input
 							type="number"
 							value="1"
+							name="amount"
 							class="input input-bordered input-warning w-24"
 						/>
 						<input

@@ -30,7 +30,7 @@ export default function Navbar({ context }: { context?: AppContext }) {
 					<option id="region-it">🇮🇹 Italy</option>
 				</select>
 				<UserButtons user={context?.user} />
-				<a href="/user/cart" class="btn btn-outline btn-success">
+				<a href="/cart" class="btn btn-outline btn-success">
 					<ShoppingBag
 						className="w-6 h-6"
 						name="Icon for cart, in the form of a shopping bag"
