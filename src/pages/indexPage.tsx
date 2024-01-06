@@ -17,65 +17,6 @@ const Page = new Elysia().use(appContext).get("/", ({ appContext }) => {
 
 export default Page;
 
-const mockData = [
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-	{
-		name: "Est tempor",
-		description:
-			"Et culpa nulla ullamco aliquip occaecat quis ad proident id cillum mollit incididunt aliqua do.",
-		price: 11110,
-		img: "https://picsum.photos/id/1020/400/600",
-	},
-];
-
 const Hero = async () => {
 	const data = await Promise.all(
 		(
@@ -94,7 +35,6 @@ const Hero = async () => {
 			return newItem;
 		})
 	);
-	console.log(data);
 
 	return (
 		<section class="flex flex-col gap-2 h-fit bg-gradient-to-b from-primary to-transparent">
