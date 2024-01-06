@@ -1,5 +1,8 @@
+import { eq } from "drizzle-orm";
 import Elysia from "elysia";
 import { Card } from "../components/card";
+import { db } from "../database";
+import { product, productImage } from "../database/schema";
 import MainLayout from "../layouts/main";
 import { appContext } from "../utils/context";
 
@@ -73,7 +76,26 @@ const mockData = [
 	},
 ];
 
-const Hero = () => {
+const Hero = async () => {
+	const data = await Promise.all(
+		(
+			await db
+				.select()
+				.from(product)
+				.innerJoin(productImage, eq(product.id, productImage.product)) // this doesn't return actual data, this is a bug in drizzle. Have to use this ugly workaround for now
+				.limit(10)
+		).map(async (item) => {
+			const images = await db
+				.select()
+				.from(productImage)
+				.where(eq(productImage.product, item.product.id));
+
+			const newItem = { ...item, product_image: images[0] };
+			return newItem;
+		})
+	);
+	console.log(data);
+
 	return (
 		<section class="flex flex-col gap-2 h-fit bg-gradient-to-b from-primary to-transparent">
 			<h2 class="w-full font-bold drop-shadow-md text-4xl px-8 pt-8 pb-4">
@@ -83,13 +105,15 @@ const Hero = () => {
 				class="w-full scroll-hide flex gap-4 md:gap-8 pb-10 overflow-x-auto"
 				style={{ scrollbarWidth: "none" }}
 			>
-				{mockData.map((item) => (
+				{data.map(async (item) => (
 					<Card
-						name={item.name}
-						description={item.description}
-						price={item.price}
-						src={item.img}
-						href={`/product?name=${encodeURI(item.name)}`}
+						name={item.product.name}
+						description={item.product.description || ""}
+						price={item.product.price}
+						src={`/public/productImage/${encodeURI(
+							item.product_image.url
+						)}`}
+						href={`/product?id=${item.product.id}`}
 						className="h-64 md:h-96 first:ml-8 snap-start scroll-m-10 shrink-0 last:mr-8"
 					/>
 				))}
