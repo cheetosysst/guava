@@ -3,7 +3,7 @@ import Navbar from "../components/navbar";
 import type { AppContext } from "../utils/context";
 
 export default function MainLayout({
-	children,
+	children: safeChildren,
 	appContext,
 	title = "Document",
 	className = "",
@@ -37,7 +37,7 @@ export default function MainLayout({
 				{/* TODO Navbar requires user login state. Check if this needs to be refactored */}
 				<Navbar context={appContext} />
 				<div class={`max-w-7xl mx-auto w-full ${className}`}>
-					{children}
+					{safeChildren}
 				</div>
 				<Footer />
 			</body>

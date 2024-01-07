@@ -13,7 +13,6 @@ const removeHandler = new Elysia({ prefix: "/remove" }).post(
 		} catch (err) {
 			return (
 				<span
-					safe
 					class="alert inline-block alert-error"
 					// @ts-ignore
 					_="on load wait 5s then transition opacity to 0 then remove me"

@@ -22,7 +22,6 @@ const addHandler = new Elysia({ prefix: "/add" }).use(appContext).post(
 		} catch (err) {
 			return (
 				<span
-					safe
 					class="alert inline-block alert-error"
 					// @ts-ignore
 					_="on load wait 5s then transition opacity to 0 then remove me"
@@ -33,7 +32,6 @@ const addHandler = new Elysia({ prefix: "/add" }).use(appContext).post(
 		}
 		return (
 			<span
-				safe
 				class="alert inline-block alert-success"
 				// @ts-ignore
 				_="on load wait 5s then transition opacity to 0 then remove me"

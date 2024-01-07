@@ -98,29 +98,28 @@ async function MainSection({
 		return <>no product</>;
 	}
 
+	const safeCards = productData.products.map(async (item) => (
+		<Card
+			name={item.product.name}
+			description={item.product.description || ""}
+			price={item.product.price}
+			src={`/public/productImage/${encodeURI(item.product_image.url)}`}
+			href={`/product?id=${item.product.id}`}
+			className="h-64 md:h-96 snap-start scroll-m-10 shrink-0"
+		/>
+	));
+
 	return (
 		<>
 			<div class="card w-full my-5 bg-base-100 drop-shadow-md">
 				<div class="card-body">
-					<div class="card-title text-4xl">
+					<div class="card-title text-4xl" safe>
 						{productData.business.name}
 					</div>
 				</div>
 			</div>
 			<div class="flex gap-4 justify-center min-h-screen">
-				{productData.products.map(async (item) => (
-					<Card
-						name={item.product.name}
-						description={item.product.description || ""}
-						price={item.product.price}
-						src={`/public/productImage/${encodeURI(
-							item.product_image.url
-						)}`}
-						href={`/product?id=${item.product.id}`}
-						className="h-64 md:h-96 snap-start scroll-m-10 shrink-0"
-					/>
-				))}
-				{/* <Card /> */}
+				{safeCards}
 			</div>
 			<Pagination
 				totalPages={productData.total}
@@ -167,7 +166,9 @@ function Pagination({
 	};
 
 	return (
-		<ul class="flex gap-2 w-full justify-center">{renderPageNumbers()}</ul>
+		<ul class="flex gap-2 w-full justify-center" safe>
+			{renderPageNumbers()}
+		</ul>
 	);
 }
 

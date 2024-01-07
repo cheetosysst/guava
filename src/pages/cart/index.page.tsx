@@ -49,7 +49,7 @@ const cartPage = new Elysia()
 									{cartItemEntry.map((item, index) => (
 										<tr id={`item${item.cart_item.id}`}>
 											<th>{index + 1}</th>
-											<td>{item.product.name}</td>
+											<td safe>{item.product.name}</td>
 											<td>{item.cart_item.amount}</td>
 											<td>
 												<form

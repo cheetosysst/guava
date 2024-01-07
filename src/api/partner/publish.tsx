@@ -17,7 +17,6 @@ const uploadHandler = new Elysia({ prefix: "/upload" }).use(appContext).post(
 		if (!(image instanceof Buffer)) {
 			return (
 				<span
-					safe
 					class="alert inline-block alert-error"
 					// @ts-ignore
 					_="on load wait 5s then transition opacity to 0 then remove me"
@@ -31,7 +30,6 @@ const uploadHandler = new Elysia({ prefix: "/upload" }).use(appContext).post(
 		if (appContext.business == null) {
 			return (
 				<span
-					safe
 					class="alert inline-block alert-error"
 					// @ts-ignore
 					_="on load wait 5s then transition opacity to 0 then remove me"
@@ -78,7 +76,6 @@ const uploadHandler = new Elysia({ prefix: "/upload" }).use(appContext).post(
 		if (result === UploadResult.BUSINESS_MISSING) {
 			return (
 				<span
-					safe
 					class="alert inline-block alert-error"
 					// @ts-ignore
 					_="on load wait 5s then transition opacity to 0 then remove me"

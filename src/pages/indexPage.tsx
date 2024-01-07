@@ -37,6 +37,17 @@ const Hero = async () => {
 		})
 	);
 
+	const safeCards = data.map(async (item) => (
+		<Card
+			name={item.product.name}
+			description={item.product.description || ""}
+			price={item.product.price}
+			src={`/public/productImage/${encodeURI(item.product_image.url)}`}
+			href={`/product?id=${item.product.id}`}
+			className="h-64 md:h-96 first:ml-8 snap-start scroll-m-10 shrink-0 last:mr-8"
+		/>
+	));
+
 	return (
 		<section class="flex flex-col gap-2 h-fit bg-gradient-to-b from-primary to-transparent">
 			<h2 class="w-full font-bold drop-shadow-md text-4xl px-8 pt-8 pb-4">
@@ -46,18 +57,7 @@ const Hero = async () => {
 				class="w-full scroll-hide flex gap-4 md:gap-8 pb-10 overflow-x-auto"
 				style={{ scrollbarWidth: "none" }}
 			>
-				{data.map(async (item) => (
-					<Card
-						name={item.product.name}
-						description={item.product.description || ""}
-						price={item.product.price}
-						src={`/public/productImage/${encodeURI(
-							item.product_image.url
-						)}`}
-						href={`/product?id=${item.product.id}`}
-						className="h-64 md:h-96 first:ml-8 snap-start scroll-m-10 shrink-0 last:mr-8"
-					/>
-				))}
+				{safeCards}
 			</div>
 		</section>
 	);

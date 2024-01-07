@@ -40,7 +40,7 @@ const Breadcrumb = ({
 							name="icon for business"
 							className="w-5 h-5"
 						/>
-						{businessName}
+						<span safe>{businessName}</span>
 					</a>
 				</li>
 				<li>
@@ -49,7 +49,7 @@ const Breadcrumb = ({
 							name="icon for product"
 							className="w-5 h-5"
 						/>
-						{productName}
+						<span safe>{productName}</span>
 					</span>
 				</li>
 			</ul>
@@ -149,10 +149,12 @@ async function MainSection({ productId }: { productId: string | undefined }) {
 					/>
 				</div>
 				<div class="p-4 relative md:w-2/3 w-full">
-					<h1 class="card-title text-3xl">
+					<h1 class="card-title text-3xl" safe>
 						{productData.product.name}
 					</h1>
-					<p class="my-4">{productData.product.description}</p>
+					<p class="my-4" safe>
+						{productData.product.description}
+					</p>
 					<form
 						class="absolute bottom-0 flex justify-start gap-2 w-full"
 						hx-post="/api/cart/add"
