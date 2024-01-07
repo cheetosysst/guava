@@ -65,10 +65,6 @@ const Hero = async () => {
 
 const Event = () => {
 	return (
-		// <div
-		// 	class="hero min-h-screen"
-		// 	style="background-image: url(https://picsum.photos/id/1076/1920/1080);"
-		// >
 		<div class="card group w-full h-72 my-8 bg-base-100 shadow-xl image-full">
 			<figure class="h-full">
 				<img

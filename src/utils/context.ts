@@ -24,7 +24,7 @@ export const appContext = new Elysia()
 			authToken != null
 				? jwt.verify(authToken as string, Bun.env.JWT_SECRET as string)
 				: undefined
-		) as AuthToken | undefined; // TODO put this type somewhere else
+		) as AuthToken | undefined;
 
 		if (
 			(typeof authToken === "string" && authToken.length === 0) ||
